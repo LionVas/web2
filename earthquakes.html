@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вулканы и землетрясения</title>
+</head>
+<body>
+<table cellpadding = 3>
+    <tr>
+        <th><a href = index.html> Главная</a></th>
+        <!-- <th><a href = avacha.html> Авачинский Вулкан</a></th> -->
+        <th><a href = #> Землетрясения</a></th>
+    </tr>
+</table>
+<hr>
+
+    <form>
+        <label><b>Выберите населеный пункт</b></label>   <br>
+        <input  type="radio"  name="country" value="0"> Петропавловска-Камчатский <br>
+        <input  type="radio"  name="country" value="1"> Северо-Курильск
+    </form>
+
+
+    <form>
+        <label> <b>Дата землетрясения:</b></label>
+    <input type="date" name = "quake">
+    </form>
+
+
+    <form>
+        <label> <b>Магнитуда:</b></label>
+     от <input type="number" min="0" max="10"> до <input type="number" min="0" max="10">
+    </form>
+
+    <form>
+        <label> <b>Расстояние от населеного пункта:</b></label>
+    от <input type="number" min="0" max="10"> до <input type="number" min="0" max="10">
+    </form>
+
+<input type = "button" value ="Сформировать">
+
+<table border="1px" cellpadding =5 >
+<tr>
+    <th>Магнитуда</th>
+    <th>Населеный пункт</th>
+    <th>Расстояние</th>
+    <th>Дата</th>
+</tr>
+<tr>
+    <td>5.5</td>
+    <td>Петропавловск-Камчатский</td>
+    <td>124 км</td>
+    <td>09.10.2025</td>
+</tr>
+<tr>
+    <td>4.2</td>
+    <td>Петропавловск-Камчатский</td>
+    <td>305 км</td>
+    <td>08.10.2025</td>
+</tr>
+<tr>
+    <td>4.5</td>
+    <td>Петропавловск-Камчатский</td>
+    <td>84 км</td>
+    <td>10.10.2025</td>
+</tr>
+
+
+
+
+</table>
+</body>
+</html>
