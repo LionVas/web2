@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,57 +14,178 @@
     
 </p>
 <hr>
+    <details>
+        <summary>График</summary>
+            <form>
+                <label><b>Значение по оси X</b></label>   <br>
+                <input  type="radio"  name="Xvalue" value="0"> Дата <br>
+                <input  type="radio"  name="Xvalue" value="1"> Расстояние
+            </form>
+            <form>
+                <label><b>Значение по оси X</b></label>   <br>
+                <input  type="checkbox"  name="Yvalue" value="0"> Глубина <br>
+                <input  type="checkbox"  name="Yvalue" value="1"> Магнитуда
+            </form>
+            <br>
+            <input type = "button" value ="Построить"><br>
+            Здесь будет график
+    </details>
+    <details>
+        <summary>Фильтр</summary>
+            <form>
+                    <label> Магнитуда:</label>
+                от <input type="number" min="0" max="10"> до <input type="number" min="0" max="10">
+                </form>
+            <form>         
+                    <label> Расстояние от населеного пункта(км):</label>
+                от <input type="number" min="0" max="500"> до <input type="number" min="0" max="500">
+            </form>
+            <form>         
+                    <label> Глубина(км):</label>
+                от <input type="number" min="0" max="500"> до <input type="number" min="0" max="500">
+            </form>
+            <form>         
+                    <label> Дата:</label>
+                с <input type="date" > до <input type="date" >
+            </form>
+                     
+            <br>
+            <input type = "button" value ="Построить">
+    </details>
+    <details>
+        <summary>Сортировка</summary>
+            <form>         
+                Первый уровень:
+                <select name="language">
+                    <option value="0"> Магнитуда </option>
+                    <option value="1"> Глубина </option>
+                    <option value="2"> Расстояние </option>
+                    <option value="3"> Дата </option>
+                    <option value="4"> Насселенный пункт </option>
+                    <option value="5" selected> Нет </option>
+                </select> по убыванию? <input type = checkbox>
+            </form>
+            
+            <form>         
+                Второй уровень:
+                <select name="language">
+                    <option value="0"> Магнитуда </option>
+                    <option value="1"> Глубина </option>
+                    <option value="2"> Расстояние </option>
+                    <option value="3"> Дата </option>
+                    <option value="4"> Насселенный пункт </option>
+                    <option value="5" selected> Нет </option>
+                </select> по убыванию? <input type = checkbox>
+            </form>
+            
+            <form>         
+                Третий уровень:
+                <select name="language">
+                    <option value="0"> Магнитуда </option>
+                    <option value="1"> Глубина </option>
+                    <option value="2"> Расстояние </option>
+                    <option value="3"> Дата </option>
+                    <option value="4"> Насселенный пункт </option>
+                    <option value="5" selected> Нет </option>
+                </select> по убыванию? <input type = checkbox>
+            </form>
+            <br>
+            <input type = "button" value ="Сортировать">
+    </details>
 
-    <form>
+
+    <!-- <form>
         <label><b>Выберите населеный пункт</b></label>   <br>
         <input  type="radio"  name="country" value="0"> Петропавловска-Камчатский <br>
         <input  type="radio"  name="country" value="1"> Северо-Курильск
     </form>
 
 
-    <form>
-        <label> <b>Дата землетрясения:</b></label>
-    <input type="date" name = "quake">
-    </form>
+    
 
 
-    <form>
-        <label> <b>Магнитуда:</b></label>
-     от <input type="number" min="0" max="10"> до <input type="number" min="0" max="10">
-    </form>
-
-    <form>
-        <label> <b>Расстояние от населеного пункта:</b></label>
-    от <input type="number" min="0" max="10"> до <input type="number" min="0" max="10">
-    </form>
-
-<input type = "button" value ="Сформировать">
+    
+<input type = "button" value ="Сформировать"> -->
 
 <table border="1px" cellpadding =5 >
 <tr>
     <th>Магнитуда</th>
     <th>Населеный пункт</th>
     <th>Расстояние</th>
+    <th>Глубина</th>
     <th>Дата</th>
 </tr>
 <tr>
     <td>5.5</td>
     <td>Петропавловск-Камчатский</td>
     <td>124 км</td>
+    <td>100км</td>
     <td>09.10.2025</td>
 </tr>
 <tr>
     <td>4.2</td>
     <td>Петропавловск-Камчатский</td>
     <td>305 км</td>
+    <td>100км</td>
     <td>08.10.2025</td>
 </tr>
 <tr>
     <td>4.5</td>
     <td>Петропавловск-Камчатский</td>
     <td>84 км</td>
+    <td>100км</td>
     <td>10.10.2025</td>
 </tr>
+<tr><td>4.3</td><td>Петропавловск-Камчатский</td><td>92 км</td><td>100км</td><td>10.10.2025</td></tr>
+<tr><td>5.1</td><td>Северо-Курильск</td><td>61 км</td><td>100км</td><td>10.10.2025</td></tr>
+<tr><td>3.9</td><td>Петропавловск-Камчатский</td><td>73 км</td><td>100км</td><td>10.10.2025</td></tr>
+<tr><td>4.8</td><td>Северо-Курильск</td><td>105 км</td><td>100км</td><td>10.10.2025</td></tr>
+<tr><td>4.2</td><td>Петропавловск-Камчатский</td><td>88 км</td><td>100км</td><td>10.10.2025</td></tr>
+<tr><td>5.4</td><td>Северо-Курильск</td><td>56 км</td><td>100км</td><td>10.10.2025</td></tr>
+<tr><td>3.7</td><td>Петропавловск-Камчатский</td><td>99 км</td><td>100км</td><td>10.10.2025</td></tr>
+<tr><td>4.9</td><td>Северо-Курильск</td><td>77 км</td><td>100км</td><td>10.10.2025</td></tr>
+<tr><td>5.0</td><td>Петропавловск-Камчатский</td><td>63 км</td><td>100км</td><td>10.10.2025</td></tr>
+<tr><td>4.4</td><td>Северо-Курильск</td><td>81 км</td><td>100км</td><td>10.10.2025</td></tr>
+<tr><td>3.8</td><td>Петропавловск-Камчатский</td><td>117 км</td><td>100км</td><td>10.10.2025</td></tr>
+<tr><td>5.2</td><td>Северо-Курильск</td><td>69 км</td><td>100км</td><td>10.10.2025</td></tr>
+<tr><td>4.1</td><td>Петропавловск-Камчатский</td><td>85 км</td><td>100км</td><td>10.10.2025</td></tr>
+<tr><td>5.3</td><td>Северо-Курильск</td><td>94 км</td><td>100км</td><td>10.10.2025</td></tr>
+<tr><td>3.6</td><td>Петропавловск-Камчатский</td><td>76 км</td><td>100км</td><td>10.10.2025</td></tr>
+<tr><td>4.7</td><td>Северо-Курильск</td><td>112 км</td><td>100км</td><td>10.10.2025</td></tr>
+<tr><td>4.0</td><td>Петропавловск-Камчатский</td><td>67 км</td><td>100км</td><td>10.10.2025</td></tr>
+<tr><td>5.6</td><td>Северо-Курильск</td><td>120 км</td><td>100км</td><td>10.10.2025</td></tr>
+<tr><td>3.5</td><td>Петропавловск-Камчатский</td><td>100км</td><td>101 км</td><td>10.10.2025</td></tr>
+<tr><td>4.6</td><td>Северо-Курильск</td><td>95 км</td><td>100км</td><td>10.10.2025</td></tr>
+<tr><td>5.7</td><td>Петропавловск-Камчатский</td><td>83 км</td><td>100км</td><td>10.10.2025</td></tr>
+<tr><td>3.4</td><td>Северо-Курильск</td><td>108 км</td><td>100км</td><td>10.10.2025</td></tr>
+<tr><td>4.8</td><td>Петропавловск-Камчатский</td><td>72 км</td><td>100км</td><td>10.10.2025</td></tr>
+<tr><td>5.0</td><td>Северо-Курильск</td><td>64 км</td><td>100км</td><td>10.10.2025</td></tr>
+<tr><td>4.9</td><td>Петропавловск-Камчатский</td><td>79 км</td><td>100км</td><td>10.10.2025</td></tr>
+<tr><td>3.8</td><td>Северо-Курильск</td><td>88 км</td><td>100км</td><td>10.10.2025</td></tr>
+<tr><td>4.4</td><td>Петропавловск-Камчатский</td><td>113 км</td><td>100км</td><td>10.10.2025</td></tr>
+<tr><td>5.1</td><td>Северо-Курильск</td><td>73 км</td><td>100км</td><td>10.10.2025</td></tr>
+<tr><td>3.9</td><td>Петропавловск-Камчатский</td><td>89 км</td><td>100км</td><td>10.10.2025</td></tr>
+<tr><td>5.2</td><td>Северо-Курильск</td><td>102 км</td><td>100км</td><td>10.10.2025</td></tr>
+<tr><td>4.1</td><td>Петропавловск-Камчатский</td><td>91 км</td><td>100км</td><td>10.10.2025</td></tr>
+<tr><td>5.3</td><td>Северо-Курильск</td><td>70 км</td><td>100км</td><td>10.10.2025</td></tr>
+<tr><td>4.2</td><td>Петропавловск-Камчатский</td><td>75 км</td><td>100км</td><td>10.10.2025</td></tr>
+<tr><td>4.7</td><td>Северо-Курильск</td><td>118 км</td><td>100км</td><td>10.10.2025</td></tr>
+<tr><td>3.6</td><td>Петропавловск-Камчатский</td><td>84 км</td><td>100км</td><td>10.10.2025</td></tr>
+<tr><td>5.0</td><td>Северо-Курильск</td><td>99 км</td><td>100км</td><td>10.10.2025</td></tr>
+<tr><td>4.9</td><td>Петропавловск-Камчатский</td><td>68 км</td><td>100км</td><td>10.10.2025</td></tr>
+<tr><td>4.0</td><td>Северо-Курильск</td><td>93 км</td><td>100км</td><td>10.10.2025</td></tr>
+<tr><td>5.5</td><td>Петропавловск-Камчатский</td><td>111 км</td><td>100км</td><td>10.10.2025</td></tr>
+<tr><td>3.7</td><td>Северо-Курильск</td><td>97 км</td><td>100км</td><td>10.10.2025</td></tr>
+<tr><td>4.8</td><td>Петропавловск-Камчатский</td><td>86 км</td><td>100км</td><td>10.10.2025</td></tr>
+<tr><td>5.4</td><td>Северо-Курильск</td><td>65 км</td><td>100км</td><td>10.10.2025</td></tr>
+<tr><td>3.9</td><td>Петропавловск-Камчатский</td><td>90 км</td><td>100км</td><td>10.10.2025</td></tr>
+<tr><td>4.6</td><td>Северо-Курильск</td><td>109 км</td><td>100км</td><td>10.10.2025</td></tr>
+<tr><td>4.1</td><td>Петропавловск-Камчатский</td><td>80 км</td><td>100км</td><td>10.10.2025</td></tr>
+<tr><td>5.2</td><td>Северо-Курильск</td><td>122 км</td><td>100км</td><td>10.10.2025</td></tr>
+<tr><td>3.8</td><td>Петропавловск-Камчатский</td><td>96 км</td><td>100км</td><td>10.10.2025</td></tr>
+<tr><td>5.0</td><td>Северо-Курильск</td><td>71 км</td><td>100км</td><td>10.10.2025</td></tr>
+<tr><td>4.5</td><td>Петропавловск-Камчатский</td><td>82 км</td><td>100км</td><td>10.10.2025</td></tr>
+<tr><td>4.3</td><td>Северо-Курильск</td><td>115 км</td><td>100км</td><td>10.10.2025</td></tr>
 
 
 
