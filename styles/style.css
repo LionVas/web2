@@ -6,6 +6,8 @@
 .subhead{
     background-color: #4dabf5;
     width: 100%;
+    /* height: 35px; */
+    padding: 10px 0;
     display: block;
     text-align: left;
 }
@@ -13,4 +15,286 @@
     display: inline-block;
     margin: 0 auto;
     float: none;
+}
+ 
+ 
+.gallery {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 16px;
+  box-sizing: border-box; 
+}
+
+
+.tiles {
+  padding: 10px;
+  font-size: 0;          
+  white-space: normal;
+  /* margin-right: 5px; */
+}
+
+
+.col-left,
+.col-right {
+  display: inline-block;
+  vertical-align: top;
+  font-size: 16px;      
+}
+
+.col-left { 
+    height: 100%;
+    width: 40%; 
+ }
+.col-right { width: 60%; }
+
+
+.tile {
+  height: 430px;
+  text-align: center;
+  line-height: 230px;
+  
+  overflow: hidden;
+  box-sizing: border-box; 
+}
+
+.tiles img{
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   
+}
+
+
+.right-row {
+  display: block;
+  
+  font-size: 0;
+}
+.right-row:last-child { margin-bottom: 0; }
+
+
+.right-row.single {
+  height: 230px;
+  
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.right-row.single img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.half {
+  display: inline-block;
+  width: 50%;
+  height: 100px;
+  vertical-align: top;
+  
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.half img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.head button{
+    border-radius: 2px;
+    border: 0px;
+    background-color: white;
+    cursor: pointer;
+}
+button:hover{
+    background-color: #4dabf5;
+}
+
+
+.rounds{
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+    
+}
+.fram{
+    display: inline-block;
+    width: 15%;
+    vertical-align: top;
+    text-align: center;
+    margin: 0 5px;
+}
+.circle {
+    
+  width: 70px;
+  height: 70px;
+  border-radius: 50%; 
+  object-fit: cover;   
+}
+.inner{
+    min-height: 120px;
+}
+
+
+
+.rounds button{
+    background-color: #4dabf5;
+    border-radius: 5px;
+    border: 2px solid;
+}
+.card1 {
+  background: #c4b3ad;         
+  width: 60%;
+  padding: 1% 2%;             
+  border-radius: 20px;
+  margin: 10px auto;
+  text-align: left;
+  font-size: 0;                  
+}
+
+
+.pic {
+  display: inline-block;
+  width: 20%;
+  height: 110px;                 
+  background: white;
+  border-radius: 20px;
+  vertical-align: middle;
+  overflow: hidden;
+}
+
+.pic img {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+.content {
+  display: inline-block;
+  width: 72%;                    
+  vertical-align: middle;
+  font-size: 16px;
+  line-height: 1.4;
+  margin-left: 7%;               
+}
+
+
+.title {
+  display: inline-block;
+  width: 22%;
+  vertical-align: top;
+}
+
+.text {
+  display: inline-block;
+  width: 75%;
+  vertical-align: top;
+}
+
+.content h3 {
+  margin: 0;                    
+  font-size: 18px;
+}
+
+
+.content p {
+  margin: 0 0 4px 0;          
+  font-size: 14px;
+  color: #333;
+}
+
+.content a {
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+}
+
+.content a:hover {
+  text-decoration: underline;
+}
+
+.pink-row{
+  width: 90%;
+  margin: 20px auto;
+  text-align: center;
+  font-size: 0; 
+}
+
+.pink-card{
+  display: inline-block;
+  width: 48%;              
+  margin: 0 1%;          
+  padding: 2%;
+  box-sizing: border-box;   
+  background: #f7b7c8;
+  border-radius: 24px;
+  vertical-align: top;
+  text-align: center;
+  font-size: 16px;
+}
+
+
+.pink-title {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+
+.pink-text {
+  text-align: left;
+  font-size: 14px;
+  color: #333;
+  line-height: 1.4;
+  margin: 0 auto;
+  width: 90%;
+}
+.pink-text-left {
+  text-align: right;
+  font-size: 14px;
+  color: #333;
+  line-height: 1.4;
+  margin: 0 auto;
+  width: 90%;
+}
+
+.pink-text a {
+  display: inline-block;
+  margin-top: 8px;
+  color: #333;
+  text-decoration: none;
+}
+.pink-text-left a {
+  display: inline-block;
+  margin-top: 8px;
+  color: #333;
+  text-decoration: none;
+}
+.pink-text a:hover {
+  text-decoration: underline;
+}
+
+
+.pink-image {
+  width: 85%;
+  height: 140px;
+  margin: 12px auto 0;
+  background: white;
+  border-radius: 22px;
+  overflow: hidden;
+}
+
+.pink-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 22px;
+}
+
+.pink-image.top {
+  margin-top: 0;
 }
