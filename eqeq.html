@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>Фильтры и сортировка</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <script src="JavaScript/data.js"></script>
+    <script src="JavaScript/main.js"></script>
+    <script src="JavaScript/table.js"></script>
+    <script src="JavaScript/filter.js"></script>
+    <script src="JavaScript/sort.js"></script>
+  </head>
+  <body>
+    <form id="filter">
+      
+      <p>
+        <label for="magnFrom"> Магнитуда:</label>
+        от <input type="number" min="0" max="10" id="magnFrom"> до <input type="number" min="0" max="10" id="magnTo">
+        
+      </p>
+      <p>
+        <label> Населеный пункт</label>
+                    <select name="country"> 
+                        <option value="0">Петропавловск-Камчатский</option>
+                        <option value="1">Северо-Курильск</option>
+                        <option value="2">Нет</option>
+                    </select>
+      </p>
+      <p>
+        <label> Расстояние от населеного пункта(км):</label>
+                от <input type="number" min="0" max="500"> до <input type="number" min="0" max="500">
+      </p>
+      <p>
+        <label> Глубина(км):</label>
+                 от <input type="number" min="0" max="500"> до <input type="number" min="0" max="500">
+      </p>
+      <p>
+        <label> Дата:</label>
+                с <input type="date" > до <input type="date" >
+      </p>
+      
+      <input type="button" value="Найти">
+      <input type="button" value="Очистить фильтры"> 
+    </form> 
+    
+    <br>
+      <form id="sort">
+    <p> Сортировать по</p>
+    <p>
+      <select id="fieldsFirst">
+      </select> 
+      по убыванию? <input  type="checkbox"  id="fieldsFirstDesc">
+    </p>
+    <p> 
+      <select id="fieldsSecond">
+      </select> 
+      по убыванию? <input  type="checkbox"  id="fieldsSecondDesc">
+    </p>
+    <input type="button" value="Сортировать"> 
+    <input type="button" value="Сбросить сортировку">
+  </form>   
+    <br>
+    <table  cellpadding="3" cellspacing="3" id="list">
+    </table>
+    <script>
+      
+    </script>
+  </body>
+</html>
