@@ -1,89 +1,80 @@
-const correspond = {
-    "Название": "structure",
-    "Тип": "category",
-    "Страна": "country",
-    "Город": "city",
-    "Год": ["magnFrom", "magnTo"],
-    "Высота": ["heightFrom", "heightTo"]
-}
-/* Структура возвращаемого ассоциативного массива:
-{
-    input_id: input_value,
-    ...
-}
-*/
+﻿const correspond = {}
+const headers = Object.keys(buildings[0]);
+correspond[headers[0]] = ["magnFrom", "magnTo"];
+correspond[headers[1]] = "country";
+correspond[headers[2]] = ["distanceFrom", "distanceTo"];
+correspond[headers[3]] = ["depthFrom", "depthTo"];
+correspond[headers[4]] = ["dateFrom", "dateTo"];
+
 const dataFilter = (dataForm) => {
     
     let dictFilter = {};
 
-    // перебираем все элементы формы с фильтрами
+    
     for (const item of dataForm.elements) {
+        if (!item.id) {
+            continue;
+        }
+
         
-        // получаем значение элемента
         let valInput = item.value;
 
-        // если поле типа text - приводим его значение к нижнему регистру
-        if (item.type === "text") {
+        if (item.tagName === "SELECT") {
+            valInput = item.value === "2" ? "" : item.options[item.selectedIndex].text.toLowerCase();
+        } else if (item.type === "text") {
             valInput = valInput.toLowerCase();
-        }else if (valInput === "" && item.id.includes("From")){
+        } else if (item.type === "date") {
+            if (valInput === "" && item.id.includes("From")) {
+                valInput = -Infinity;
+            } else if (valInput === "" && item.id.includes("To")) {
+                valInput = Infinity;
+            } else {
+                valInput = Date.parse(valInput);
+            }
+        } else if (valInput === "" && item.id.includes("From")) {
             valInput = -Infinity;
-        }else if (valInput === "" && item.id.includes("To")){
+        } else if (valInput === "" && item.id.includes("To")) {
             valInput = Infinity;
-        }else if (item.type ==="number"){
+        } else if (item.type === "number") {
             valInput = Number(valInput);
-        } 
-        /* САМОСТОЯТЕЛЬНО обработать значения числовых полей:
-        - если в поле занесено значение - преобразовать valInput к числу;
-        - если поле пусто и его id включает From  - занести в valInput 
-           -бесконечность
-        - если поле пусто и его id включает To  - занести в valInput 
-           +бесконечность
-        */
-
-         // формируем очередной элемент ассоциативного массива
-        dictFilter[item.id] = valInput;
+        }
+         dictFilter[item.id] = valInput;
     }       
     return dictFilter;
 }
-// фильтрация таблицы
 const filterTable = (data, idTable, dataForm) =>{
     
-    // получаем данные из полей формы
-    const datafilter = dataFilter(dataForm);
+   const datafilter = dataFilter(dataForm);
     
-    // выбираем данные соответствующие фильтру и формируем таблицу из них
-    let tableFilter = data.filter(item => {
+     let tableFilter = data.filter(item => {
 
-        /* в этой переменной будут "накапливаться" результаты сравнения данных
-           с параметрами фильтра */
+         
         let result = true;
         
-        // строка соответствует фильтру, если сравнение всех значения из input 
-        // со значением ячейки очередной строки - истина
-         Object.entries(item).map(([key, val]) => {
-            //console.log(key +" "+ val);
-            // текстовые поля проверяем на вхождение
-            if (typeof val == 'string') {
-                result &&= val.toLowerCase().includes(datafilter[correspond[key]]); 
-               // console.log(val+ " " + datafilter[correspond[key]] + " " + result);
-            } else if (typeof val == 'number'){
-               //console.log(val+ " "+ key + " " + datafilter[correspond[key][0]] + " " + datafilter[correspond[key][1]]);
-                result &&= val > datafilter[correspond[key][0]] && val < datafilter[correspond[key][1]];
+       Object.entries(item).map(([key, val]) => {
+            if (!(key in correspond)) {
+                return;
+            }
+
+            if (Array.isArray(correspond[key])) {
+                const [fromId, toId] = correspond[key];
+                if (typeof val == 'number') {
+                    result &&= val >= datafilter[fromId] && val <= datafilter[toId];
+                } else if (typeof val == 'string') {
+                    const [day, month, year] = val.split('.').map(Number);
+                    const dateValue = new Date(year, month - 1, day).getTime();
+                    result &&= dateValue >= datafilter[fromId] && dateValue <= datafilter[toId];
+                }
+            } else if (typeof val == 'string') {
+                result &&= val.toLowerCase().includes(datafilter[correspond[key]]);
             }
          });
         
         return result;
     });     
 
-    // САМОСТОЯТЕЛЬНО вызвать функцию, которая удаляет все строки таблицы с id=idTable
     clearTable(idTable);
-    // показать на странице таблицу с отфильтрованными строками
-   // console.log;
-//    if (tableFilter.length == 0){
-//         head = {...correspond};
-//         Object.keys(head).forEach(key=>{ head[key] = ""});
-//         tableFilter.push(head);
-//    }
+   
     createTable(tableFilter, idTable);  
 }
 
@@ -94,3 +85,4 @@ const clearFilter = (idTable) => {
     clearTable(idTable);
     createTable(buildings, idTable);
 }
+
