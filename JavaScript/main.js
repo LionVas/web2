@@ -17,6 +17,13 @@
     firstSelect.addEventListener('change', function() {
         const nextSelectId = 'fieldsSecond';  
         changeNextSelect(firstSelect, nextSelectId);
+        
+    });
+    const secondSelect = document.getElementById("fieldsSecond");
+    secondSelect.addEventListener('change', function() {
+        const nextSelectId = 'fieldsThird';  
+        changeNextSelect(secondSelect, nextSelectId);
+        
     });
     const sortButton = document.getElementById("sortBtn")
     sortButton.addEventListener("click", function(){
@@ -24,7 +31,7 @@
     })
     const resetSortButton = document.getElementById("resetSortBtn")
     resetSortButton.addEventListener("click", function(){
-        const filtForm = document.getElementById("filter");
+        const filtForm = document.getElementById("sort");
         filtForm.reset();
         resetSort('list');
     })
