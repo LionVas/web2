@@ -9,11 +9,10 @@ const createTable = (data, idTable) => {
     }
     const header = Object.keys(data[0]);
      
-    /* создание шапки таблицы */
+
     const headerRow = createHeaderRow(header);
     table.append(headerRow);
 	
-    /* создание тела таблицы */
     const bodyRows = createBodyRows(data);
     table.append(bodyRows); 
 };
