@@ -17,24 +17,37 @@
     firstSelect.addEventListener('change', function() {
         const nextSelectId = 'fieldsSecond';  
         changeNextSelect(firstSelect, nextSelectId);
+        const thrSelect = document.getElementById("fieldsThird");
+        thrSelect.value = 0;
+        thrSelect.disabled = true;
         
     });
     const secondSelect = document.getElementById("fieldsSecond");
     secondSelect.addEventListener('change', function() {
-        const nextSelectId = 'fieldsThird';  
-        changeNextSelect(secondSelect, nextSelectId);
-        
+        const thrSelectId = 'fieldsThird';  
+        changeNextSelect(secondSelect, thrSelectId);     
     });
+
+
     const sortButton = document.getElementById("sortBtn")
     sortButton.addEventListener("click", function(){
         sortTable('list', document.getElementById("sort") );
     })
-    const resetSortButton = document.getElementById("resetSortBtn")
-    resetSortButton.addEventListener("click", function(){
-        const filtForm = document.getElementById("sort");
-        filtForm.reset();
-        resetSort('list');
-    })
+    const resetSortButton = document.getElementById("resetSortBtn");
+resetSortButton.addEventListener("click", function(){
+    const filtForm = document.getElementById("sort");
+    filtForm.reset();
+    const allSelect = Array.from(filtForm.getElementsByTagName('select'));
+    allSelect.forEach((item, index) => {
+        if (index === 0) {
+            item.disabled = false;
+        } else {  
+            item.disabled = true;
+        }
+        item.value = 0;
+    });
+    resetSort('list');
+    });
 })
 
 
@@ -48,8 +61,6 @@ const resSortForm = () =>{
 
     for (let i = 0; i < allSelect.length; i++) {
         const item = allSelect[i];
-
-       
         if (item.tagName === 'SELECT' && i !== 0) {
             item.disabled = true;  
         } else {
@@ -93,17 +104,21 @@ const setSortSelects = (data, dataForm) => {
 
 
 const changeNextSelect = (curSelect, nextSelectId) => {
-    
     let nextSelect = document.getElementById(nextSelectId);
-    
     nextSelect.disabled = false;
-    
-    
-    nextSelect.innerHTML = curSelect.innerHTML;
-    
+    nextSelect.innerHTML = "";
+    let options = Array.from(curSelect.options).slice(); 
+    options.forEach(option => {
+        let newOption = document.createElement('option');
+        newOption.value = option.value;
+        newOption.text = option.text;
+        nextSelect.appendChild(newOption);
+    });
+
     if (curSelect.value != 0) {
-       nextSelect.remove(curSelect.value);
-    } else {
+        nextSelect.querySelector(`option[value="${curSelect.value}"]`).remove();
+    } 
+    if(curSelect.value ==0) {
         nextSelect.disabled = true;
     }
 }
