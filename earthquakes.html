@@ -58,21 +58,6 @@
         font-family: "Segoe UI", sans-serif;
       }
 
-      .chart-tooltip {
-        position: absolute;
-        z-index: 5;
-        pointer-events: none;
-        padding: 0.55rem 0.7rem;
-        border-radius: 0.75rem;
-        background: rgba(15, 35, 54, 0.92);
-        color: #fff;
-        font-size: 0.9rem;
-        line-height: 1.35;
-        opacity: 0;
-        transform: translate(-50%, calc(-100% - 12px));
-        transition: opacity 0.15s ease;
-        white-space: nowrap;
-      }
     </style>
   </head>
   <body>
@@ -120,9 +105,7 @@
           </label>
           <button type="button" id="buildChartBtn" class="btn btn-primary">Построить</button>
         </div>
-        <div id="chart">
-          <div class="chart-tooltip" id="chartTooltip"></div>
-        </div>
+        <div id="chart"></div>
       </div>
     </details>
 

@@ -3,8 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const xAxisSelect = document.getElementById("chartXAxis");
     const yAxisSelect = document.getElementById("chartYAxis");
     const buildButton = document.getElementById("buildChartBtn");
-    const chartContainer = document.getElementById("chart");
-    const tooltip = document.getElementById("chartTooltip");
 
     const dateParser = d3.timeParse("%d.%m.%Y");
     const dateFormatter = d3.timeFormat("%d.%m.%Y");
@@ -279,9 +277,10 @@ document.addEventListener("DOMContentLoaded", () => {
             .nice()
             .range([height, 0]);
 
-        group.append("g")
+        const xAxis = group.append("g")
             .attr("transform", `translate(0,${height})`)
             .call(createXAxis(xScale, xKind));
+        formatXAxisLabels(xAxis, xKind);
 
         group.append("g")
             .call(d3.axisLeft(yScale).ticks(8));
@@ -296,16 +295,7 @@ document.addEventListener("DOMContentLoaded", () => {
             .attr("r", 5)
             .attr("fill", "#e85d04")
             .attr("fill-opacity", 0.8)
-            .attr("stroke", "#8f2d00")
-            .on("mouseenter", (event, point) => {
-                showTooltip(event, [
-                    `${xField}: ${point.rawX}`,
-                    `${yField}: ${point.rawY}`,
-                    point.place ? `Населенный пункт: ${point.place}` : "",
-                ].filter(Boolean));
-            })
-            .on("mousemove", moveTooltip)
-            .on("mouseleave", hideTooltip);
+            .attr("stroke", "#8f2d00");
 
         appendLabels(svg, width, height, margin, xField, yField);
     }
@@ -328,9 +318,10 @@ document.addEventListener("DOMContentLoaded", () => {
             .nice()
             .range([height, 0]);
 
-        group.append("g")
+        const xAxis = group.append("g")
             .attr("transform", `translate(0,${height})`)
             .call(createXAxis(xScale, xKind));
+        formatXAxisLabels(xAxis, xKind);
 
         group.append("g")
             .call(d3.axisLeft(yScale).ticks(8));
@@ -355,16 +346,7 @@ document.addEventListener("DOMContentLoaded", () => {
             .attr("cy", (point) => yScale(point.yValue))
             .attr("r", 5)
             .attr("fill", "#14b8a6")
-            .attr("stroke", "#115e59")
-            .on("mouseenter", (event, point) => {
-                showTooltip(event, [
-                    `${xField}: ${point.label}`,
-                    `${yField}: ${point.yValue.toFixed(2)}`,
-                    `Количество записей: ${point.count}`,
-                ]);
-            })
-            .on("mousemove", moveTooltip)
-            .on("mouseleave", hideTooltip);
+            .attr("stroke", "#115e59");
 
         appendLabels(svg, width, height, margin, xField, yField);
     }
@@ -409,16 +391,7 @@ document.addEventListener("DOMContentLoaded", () => {
             .attr("width", xScale.bandwidth())
             .attr("height", (point) => height - yScale(point.yValue))
             .attr("fill", "#2563eb")
-            .attr("rx", 8)
-            .on("mouseenter", (event, point) => {
-                showTooltip(event, [
-                    `${xField}: ${point.label}`,
-                    `${yField}: ${point.yValue.toFixed(2)}`,
-                    `Количество записей: ${point.count}`,
-                ]);
-            })
-            .on("mousemove", moveTooltip)
-            .on("mouseleave", hideTooltip);
+            .attr("rx", 8);
 
         appendLabels(svg, width, height, margin, xField, yField);
     }
@@ -470,10 +443,21 @@ document.addEventListener("DOMContentLoaded", () => {
         const axis = d3.axisBottom(scale);
 
         if (kind === "date") {
-            axis.ticks(8).tickFormat(d3.timeFormat("%d.%m"));
+            axis.ticks(d3.timeWeek.every(2));
+            axis.tickFormat(d3.timeFormat("%d.%m.%Y"));
         }
 
         return axis;
+    }
+
+    function formatXAxisLabels(axisGroup, kind) {
+        if (kind !== "date") {
+            return;
+        }
+
+        axisGroup.selectAll("text")
+            .attr("transform", "rotate(-35)")
+            .style("text-anchor", "end");
     }
 
     function expandExtent(extent) {
@@ -537,7 +521,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function clearChart() {
         d3.select("#chart").selectAll("svg, .chart-empty").remove();
-        hideTooltip();
     }
 
     function showEmptyState(message) {
@@ -550,19 +533,4 @@ document.addEventListener("DOMContentLoaded", () => {
             .text(message);
     }
 
-    function showTooltip(event, lines) {
-        tooltip.innerHTML = lines.join("<br>");
-        tooltip.style.opacity = "1";
-        moveTooltip(event);
-    }
-
-    function moveTooltip(event) {
-        const bounds = chartContainer.getBoundingClientRect();
-        tooltip.style.left = `${event.clientX - bounds.left}px`;
-        tooltip.style.top = `${event.clientY - bounds.top}px`;
-    }
-
-    function hideTooltip() {
-        tooltip.style.opacity = "0";
-    }
 });
